@@ -2688,10 +2688,12 @@
 # print(chr(101))
 # print(chr(2977))
 
-a = 122
-b = 97
-characters = [chr(x) for x in range(min(a, b), max(a, b) + 1)]
-print(*characters)
-print(*(chr(x) for x in range(a, b + 1)) if a < b else
-(chr(x) for x in range(b, a + 1)))
+# a = 122
+# b = 97
+# characters = [chr(x) for x in range(min(a, b), max(a, b) + 1)]
+# print(*characters)
+# print(*(chr(x) for x in range(a, b + 1)) if a < b else
+# (chr(x) for x in range(b, a + 1)))
 
+# print("Hello, world!")
+#
