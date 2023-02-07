@@ -2,6 +2,7 @@
 # age = 20
 # print("Hello,", name)
 # print(type(age))
+import re
 
 # a = b = c = 1
 # print(a, b, c)
@@ -2604,10 +2605,10 @@
 # print(f"Значение числа pi: {round(pi, 2)}")
 # print(f"Значение числа pi: {pi:.2f}")
 
-x = 10
-y = 5
-print(f"{x = }\n{y = }")
-print(f"{x} x {y} / 2 = {x * y}")
+# x = 10
+# y = 5
+# print(f"{x = }\n{y = }")
+# print(f"{x} x {y} / 2 = {x * y}")
 
 # a = 74
 # print(f"{{{{{a}}}}}")
@@ -2848,4 +2849,235 @@ print(f"{x} x {y} / 2 = {x * y}")
 # reg = r'2[0-9][0-9][0-9]'
 # print(re.findall(reg, s))
 
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта."
+# reg = r'[^0-9]'
+# print(re.findall(reg, s))
+#
+# s1 = "Час в 24-часовом формате от 00 до 23. 2021-06-15T21:45." \
+#      "Минуты в диапазоне от 00 до 59. 2021-06-15T01:09."
+# r1 = '[0-2][0-9]:[0-5][0-9]'
+# print(re.findall(r1, s1))
 
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта."
+# # reg = r'20*'
+# # print(re.findall(reg, s))
+#
+# # d = "Цифры: 7, +17, -42, 0013, 0.3"
+# # print(re.findall(r'[+-]?[\d.]+', d))
+#
+# d = "05-03-1987 # Дата рождения"
+#
+# print("Дата рождения:", re.sub('#.*', '', d))
+# print("Дата рождения:", re.sub('-', '.', re.sub('#.*', '', d)))
+
+
+# d = 'author=Пушкин А.С.; title = Евгений Онегин; price =200; year= 1831'
+# # r1 = r'\w+\s*=\s*\w+\s*[\w.]*'
+# r1 = r'\w+\s*=[^;]+'
+# print(re.findall(r1, d))
+
+
+# s1 = "12 сентября 2023 года"
+# r1 = r"\d{4}"
+# print(re.findall(r1, s1))
+
+# s = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
+# reg = r"\+?7\d{10}"
+# print(re.findall(reg, s))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта."
+# reg = r'\w+\.$'
+#
+# print(re.findall(reg, s))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта."
+# print(re.findall(r'\w+', '12 + й', flags=re.ASCII))
+
+# text = "hello world"
+# print(re.findall(r'\w\+', text, re.DEBUG))
+
+# reg = "я"
+# print(re.findall(reg, s, re.I))
+
+# text = """
+# one
+# two
+# """
+# print(re.findall(r"one$", text))
+# print(re.findall(r"one$", text, re.MULTILINE))
+# print(re.findall(r"one.\w+", text, re.DOTALL))
+
+# print(re.findall("""
+# [\w-]+  # part1
+# @       # @
+# [\w-]+  # part2
+# """, "test@mail.ru", re.VERBOSE))
+
+
+# text = """
+# Python,
+# python,
+# PYTHON
+# """
+#
+# reg = "(?mi)^python"
+# print(re.findall(reg, text))
+
+# def validate_name(name):
+    # return re.findall('^[\w-]{3,16}$', name)
+#     return re.search('^[\w-]{3,16}$', name).group()
+#
+#
+# print(validate_name('Python_master'))
+# print(validate_name('Pyt'))
+#
+# s1 = "12345@i.ru, 123_456@ru.name.ru, login@i.ru, логин-1@i.ru, login.3@i.ru," \
+#        "login.3-67@i.ru, 1login@ru.name.ru"
+# # r1 = r"[\w.-]+@\w*\.?\w*\.?\w*"
+# r1 = r"[\w.-]+@[\w.-]+[\w{2,3}]"
+#
+# print(re.findall(r1, s1))
+
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall('<.*?o>', text))
+
+
+# t = "<p>Изображение <img alt='картинка' src='bg.jpg'> - фон страницы</p>"
+# # reg = r'<img.*?>'
+# reg = r'<img\s+[^>]*?src\s*=\s*[^>]+>'
+# print(re.findall(reg, t))
+
+
+# t = "Петр, Ольга и Виталий отлично учатся"
+# reg = "Петр|Ольга"
+# print(re.findall(reg, t))
+
+# t = "int = 4, float = 4.0, double = 8.0f"
+# reg = r"int\s*=\s*\d+[\w.]*|double\s*=\s*\d+[\w.]*"
+# reg = r"(?:int|double)\s*=\s*\d+[\w.]*"
+# reg = r"((int|double)\s*=\s*(\d+[\w.]*))"
+
+# print(re.findall(reg, t))
+
+
+# def validate_name(name):
+#     return re.findall(r'^[a-z\d@_-]{6,18}$', name, re.IGNORECASE)
+#
+#
+# print(validate_name('my-p@ssw0rd'))
+
+
+# s1 = '127.0.0.1'
+# reg = r'(?:\d{1,3}.){3}\d{1,3}'
+# print(re.findall(reg, s1))
+
+
+# s1 = "Word2016, PS6, AI5"
+# reg = r'([a-z]+)(\d+)'
+# print(re.findall(reg, s1, re.I))
+
+#
+# s1 = "5 + 7*2 -4"
+# reg = r'\s*([+*-])\s*'
+# print(re.split(reg, s1))
+
+
+# a = '28-08-2021'
+# reg = r'^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-(19\d\d|20\d\d)$'
+# print(re.findall(reg, a))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта."
+# reg = r'([0-9]+)\s(\D+)'
+# print(re.search(reg, s).group(1))
+# print(re.findall(reg, s))
+# m = re.search(reg, s)
+# print(m[0])
+# print(m[1])
+# print(m[2])
+
+
+# text = """
+# Самара
+# Москва
+# Тверь
+# Уфа
+# Казань
+# """
+#
+# count = 0
+#
+#
+# def repl_find(m):
+#     global count
+#     count += 1
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
+
+
+# print(re.sub(r'\s*(\w+)\s*', repl_find, text))
+
+
+# s = "<p>Изображения <img src='bg.jpg'> - фон страницы</p>"
+# # reg = r"<img\s+[^>]*src=(['\"])(.*)\1>"
+# reg = r"<img\s+[^>]*src=(?P<q>['\"])(.*)(?P=q)>"
+# print(re.findall(reg, s)[0][1])
+#
+# # (?P<name>) (?P=name)
+
+
+# s = "Самолет прилетает 10/23/2023. Будем вас рады видеть после 10/24/2023."
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+
+# s = "yandex.com and yandex.ru"
+# reg = r'(([a-z0-9\-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg, r"http://\1", s))
+
+
+# Рекурсия
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("->", n)
+#     elevator(n - 1)
+#     print(n, end=" ")
+#
+# n1 = int(input("На каком вы этаже: "))
+# elevator(n1)
+
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+
+def sum_list(lst):
+    if len(lst) == 1:
+        print(lst, "=> lst[0]: ", lst[0])
+        return lst[0]
+    else:
+        print(lst, "=> lst[0]: ", lst[0])
+        return lst[0] + sum_list(lst[1:])
+
+
+print(sum_list([1, 3, 5, 7, 9]))
+
+
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+#
+#
+# print(to_str(255, 16))
