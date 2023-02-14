@@ -16,7 +16,7 @@ neg = 0
 
 def neg_count(lst):
     global neg
-    if len(lst) == 0:
+    if not lst:
         return neg
     elif lst[0] < 0:
         neg += 1

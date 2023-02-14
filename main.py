@@ -3,6 +3,7 @@
 # print("Hello,", name)
 # print(type(age))
 import re
+import time
 
 # a = b = c = 1
 # print(a, b, c)
@@ -2925,7 +2926,7 @@ import re
 # print(re.findall(reg, text))
 
 # def validate_name(name):
-    # return re.findall('^[\w-]{3,16}$', name)
+# return re.findall('^[\w-]{3,16}$', name)
 #     return re.search('^[\w-]{3,16}$', name).group()
 #
 #
@@ -3060,18 +3061,19 @@ import re
 # print(sum_list([1, 3, 5, 7, 9]))
 
 
-def sum_list(lst):
-    if len(lst) == 1:
-        print(lst, "=> lst[0]: ", lst[0])
-        return lst[0]
-    else:
-        print(lst, "=> lst[0]: ", lst[0])
-        return lst[0] + sum_list(lst[1:])
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, "=> lst[0]: ", lst[0])
+#         return lst[0]
+#     else:
+#         print(lst, "=> lst[0]: ", lst[0])
+#         return lst[0] + sum_list(lst[1:])
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
 
 
-print(sum_list([1, 3, 5, 7, 9]))
-
-
+# Конвертировать числа по другим основаниям
 # def to_str(n, base):
 #     convert = "0123456789ABCDEF"
 #     if n < base:
@@ -3081,3 +3083,372 @@ print(sum_list([1, 3, 5, 7, 9]))
 #
 #
 # print(to_str(255, 16))
+
+
+# Проверка номера телефона
+# def validate_phone(number):
+#     reg = r'^\+?7\s*\(?\d{3}\)?\s*[\d\s-]{7,9}$'
+#     return re.search(reg, number).group()
+#
+# print(validate_phone('+7 499 456-45-78'))
+# print(validate_phone('+74994564578'))
+# print(validate_phone('7 (499) 456 45 78'))
+# print(validate_phone('7 (499) 456-45-78'))
+
+
+# Рекурсия по вложенному списку
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'],
+#          'Alex', ['Bea', 'Bill'], 'Ann']
+
+
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_items(names))
+
+
+# def count_items2(item_list):
+#     count = 0
+#     for name in item_list:
+#         if isinstance((name, str)):
+#             count += 1
+#         elif isinstance(name, lst):
+#             for i in name:
+#                 if isinstance(n, str):
+#                     count += 1
+#                 elif isinstance(n, list):
+#                     count += len(n)
+#     print(count)
+
+
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'],
+#          'Alex', ['Bea', 'Bill'], 'Ann']
+#
+#
+# def count_items(item_list):
+#     count = 0
+#     stack = []
+#     current_list = item_list
+#     i = 0
+#     while True:
+#         if i == len(current_list):
+#             if current_list == item_list:
+#                 return count
+#             else:
+#                 current_list, i = stack.pop()
+#                 i += 1
+#         if isinstance(current_list[i], list):
+#             stack.append([current_list, i])
+#             current_list = current_list[i]
+#             i = 0
+#         count += 1
+#         i += 1
+#
+# print(count_items(names))
+
+
+# Выпрямление списка
+# names = ['Adam', ['Bob', ['Chet', 'Cat'], 'Bard', 'Bert'],
+#          'Alex', ['Bea', 'Bill'], 'Ann']
+# 
+# def union(s):
+#     if not s:
+#         return s
+#     if isinstance(s[0], list):
+#         return union(s[0] + union(s[1:]))
+#     return s[:1] + union(s[1:])
+# 
+# 
+# print(union(names))
+
+
+# Удаляем побелы рекурсией
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == "\t" or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove(" Hello\tWorld! "))
+
+
+# Линейный (последовательный) поиск
+
+
+# def seq_search(s, item):
+#     pos = 0
+#     found = False
+#     while pos < len(s) and not found:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             pos += 1
+#     return found
+#
+#
+# lst = [54, 26, 93, 17, 77, 31, 44, 55, 20, 65]
+# print(seq_search(lst, 20))
+# print(seq_search(lst, 28))
+
+
+# def seq_search(s, item):
+#     pos = 0
+#     found = False
+#     stop = False
+#     while pos < len(s) and not found and not stop:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             if s[pos] > item:
+#                 stop = True
+#             else:
+#                 pos += 1
+#     return found
+#
+#
+# lst = [54, 26, 93, 17, 77, 31, 44, 55, 20, 65]
+# lst.sort()
+# print(lst)
+# print(seq_search(lst, 20))
+# print(seq_search(lst, 28))
+
+
+# Бинарный поиск
+
+# def binary_search(s, item):
+#     first = 0
+#     last = len(s) - 1
+#     found = False
+#
+#     while first <= last and not found:
+#         midpoint = (first + last) // 2
+#         if s[midpoint] == item:
+#             found = True
+#         else:
+#             if item < s[midpoint]:
+#                 last = midpoint - 1
+#             else:
+#                 first = midpoint + 1
+#
+#     return found
+
+
+# lst = [17, 20, 26, 31, 44, 54, 55, 65, 77, 93]
+# print(binary_search(lst, 93))
+# print(binary_search(lst, 28))
+
+
+# Алгоритмы сортировки
+# Пузырьковая сортировка
+
+
+# from random import randint
+# import time
+
+
+# def bubble(array):
+#     for i in range(len(array) - 1):
+#         for j in range(len(array) - i - 1):
+#             if array[j] > array[j + 1]:
+#                 array[j], array[j + 1] = array [j + 1], array[j]
+#
+#
+# a = [randint(1, 100) for i in range (10)]
+# print(a)
+# bubble(a)
+# print(a)
+
+# def binary_search(s, item):
+#     found = False
+#     first = 0
+#     last = len(s) - 1
+#     while first <= last and not found:
+#         midpoint = (first + last) // 2
+#         if s[midpoint] == item:
+#                 found = True
+#         else:
+#             if item < s[midpoint]:
+#                     last = midpoint - 1
+#             else:
+#                     first = midpoint + 1
+#
+#     return found
+#
+#
+# a = [randint(1, 100) for i in range(10)]
+# a.sort()
+# print(a)
+# n = int(input("Введите число: "))
+# if binary_search(a, n):
+#     print(f'Число {n} в списке присутствует')
+# else:
+#     print(f'Число {n} в списке отсутствует')
+
+
+# def bubble(array):
+#     for i in range(len(array) - 1):
+#         for j in range(len(array) - i - 1):
+#             if array[j] > array[j + 1]:
+#                 array[j], array[j + 1] = array[j + 1], array[j]
+#
+#
+# a = [randint(1, 100) for i in range(10000)]
+# start = time.monotonic()
+# bubble(a)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+# Сортировка слиянием
+# def merge_sort(a):
+#     n = len(a)
+#     if n < 2:
+#         return a
+#     left = merge_sort(a[:n // 2])
+#     right = merge_sort(a[n // 2:n])
+#
+#     i = j = 0
+#     res = []
+#
+#     while i < len(left) or j < len(right):
+#         if not i < len(left):
+#             res.append(right[j])
+#             j += 1
+#         elif not j < len(right):
+#             res.append(left[i])
+#             i += 1
+#         elif left[i] < right[j]:
+#             res.append(left[i])
+#             i += 1
+#         else:
+#             res.append(right[j])
+#             j += 1
+#     return res
+#
+#
+# array = [randint(1, 100) for i in range(10000)]
+# start = time.monotonic()
+# array = merge_sort(array)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+# Сортировка Шелла
+# def shell_sort(s):
+#     gap = len(s)
+#
+#     while gap > 0:
+#         for val in range(gap, len(s)):
+#             cur_val = s[val]
+#             pos = val
+#
+#             while pos >= gap and s[pos-gap] > cur_val:
+#                 s[pos] = s[pos - gap]
+#                 pos -= gap
+#                 s[pos] = cur_val
+#         gap //= 2
+#     return s
+#
+#
+#
+# a = [randint(1, 100) for i in range(10000)]
+# start = time.monotonic()
+# shell_sort(a)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+
+# def quick_sort(a):
+#     if len(a) > 1:
+#         x = a[(len(a) - 1) // 2]
+#         low = [i for i in a if i < x]
+#         eq = [i for i in a if i == x]
+#         high = [i for i in a if i > x]
+#         a = quick_sort(low) + eq + quick_sort(high)
+#     return a
+#
+#
+# lst = [randint(1, 100) for i in range(10000)]
+# start = time.monotonic()
+# lst = quick_sort(lst)
+# res = time.monotonic() - start
+# print(res, "sec")
+
+
+# lst = [randint(1, 100) for i in range(10000)]
+# start = time.monotonic()
+# lst.sort()
+# res = time.monotonic() - start
+# print(res, "sec")
+
+
+# Работа с файлами
+
+# f = open('text.txt')
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+
+# f = open('test.txt')
+# print(f.readline())
+# print(f.readline(8))
+# print(f.readline())
+# f.close()
+
+#
+# f = open('test.txt')
+# print(f.readlines())
+# f.close()
+
+
+# f = open('test.txt')
+# for line in f:
+#     print(line)
+# f.close()
+
+# lines = 0
+# f = open('test.txt')
+#
+# print(lines)
+# f.close()
+
+# f = open('xyz.txt', 'a')
+# f.write("Hello\nworld!")
+# f.close()
+
+# f = open('xyz.txt', 'w')
+# # lines = ['This is line 1', 'This is line 2']
+# lines = [str(i ** 5) for i in range(1, 20)]
+# print(lines)
+# for index in lines:
+#     f.write(index + "\t")
+# f.close()
+
+
+# f = open('text2.txt', 'w')
+# f.write("Замена строки в текстовом файле:\nизменить строку в списке;\n"
+#         "записать список файл.")
+# f.close()
+#
+# f = open('text2.txt', 'r')
+# read_f = f.readlines()
+# print(read_f)
+# f.close()
+# for i in range(len(read_f)):
+#     if read_f[i] == "изменить строку в списке;\n":
+#         read_f[i] = "Hello world!\n"
+# print(read_f)
+# f.close()
+#
+# f = open('text2.txt', 'w')
+# f.writelines(read_f)
+# f.close()
