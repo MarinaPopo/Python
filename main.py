@@ -3804,34 +3804,60 @@ import time
 # print("count =", Point.count)
 
 
-class Robot:
-    k = 0
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print(f"Инициализация {self.name}")
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут", self.name)
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid2 = Robot('C-3PO')
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# del droid1
+# del droid2
+# print("Численность роботов:", Robot.k)
 
-    def __init__(self, name):
-        self.name = name
-        print(f"Инициализация {self.name}")
-        Robot.k += 1
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def set_coord(self, x, y):  # установить координаты
+#         if (isinstance(x, int) or isinstance(x, float)) and (isinstance(y, int) or isinstance(y, float)):
+#             self.__x = x
+#             self.__y = y
+#         else: print("Координаты должны быть числами")
+#
+#     def get_coord(self):  # получить координаты
+#         return self.__x, self.__y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.get_coord())
+# p1.set_coord(1, "a")
+# print(p1.get_coord())
+# p1.x = 100
+# p1.y = 'abc'
+# print(p1.x, p1.y)
 
-    def __del__(self):
-        print(self.name, "выключается")
-        Robot.k -= 1
-        if Robot.k == 0:
-            print(self.name, "был последним")
-        else:
-            print("Работающих роботов осталось:", Robot.k)
-
-    def say_hi(self):
-        print("Приветствую! Меня зовут", self.name)
 
 
-droid1 = Robot('R2-D2')
-droid1.say_hi()
-print("Численность роботов:", Robot.k)
-
-droid2 = Robot('C-3PO')
-droid2.say_hi()
-print("Численность роботов:", Robot.k)
-
-del droid1
-del droid2
-print("Численность роботов:", Robot.k)
