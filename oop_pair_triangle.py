@@ -35,13 +35,13 @@ class RightTriangle(Pair):
         super().__init__(a, b)
 
     def hypotenuse(self):
-        return print(f"Гипотенуза треугольника: {round(math.sqrt(self.a ** 2 + self.b ** 2), 2)}")
+        return print(f"Гипотенуза треугольника: {math.sqrt(self.a ** 2 + self.b ** 2):.2f}")
 
     def area(self):
-        return print(f"Площадь треугольника: {round(super().mult() / 2, 2)}")
+        return print(f"Площадь треугольника: {super().mult() / 2:.2f}")
 
     def info(self):
-        print(f"Прямоугольный треугольник ({self.a}, {self.b}, {round(math.sqrt(self.a ** 2 + self.b ** 2), 2)})")
+        print(f"Прямоугольный треугольник ({self.a}, {self.b}, {math.sqrt(self.a ** 2 + self.b ** 2):.2f}")
 
 
 triangle = RightTriangle(5, 8)
