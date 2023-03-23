@@ -68,7 +68,6 @@ class Triagle(Shape):
         print("===Треугольник===")
         print(f"Сторона 1: {self.a}\nСторона 2: {self.b}\nСторона 3: {self.c}")
         super().info()
-        self.draw()
         print()
 
 
