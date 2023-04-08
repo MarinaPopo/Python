@@ -6443,10 +6443,10 @@ from bs4 import BeautifulSoup
 #     get_salary(i.text)
 
 
-import requests
-from bs4 import BeautifulSoup
-import re
-import csv
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
 
 
 # res = requests.get('https://ru.wordpress.org/')
@@ -6455,39 +6455,142 @@ import csv
 # print(res.content)
 # print(res.text)
 
-def get_html(url):
-    res = requests.get(url)
-    return res.text
+# def get_html(url):
+#     res = requests.get(url)
+#     return res.text
+#
+#
+# def refined(s):
+#     return re.sub(r"\D", "", s)
+#
+#
+# def write_csv(data):
+#     with open('plugins.csv', 'a') as f:
+#         writer = csv.writer(f, delimiter=';', lineterminator='\r')
+#
+#         writer.writerow(data['name'], data['url'], data['rating'])
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all('section', class_='plugin-section')[1]
+#     plugins = p1.find_all('article')
+#
+#     for plugin in plugins:
+#         name = plugin.find('h3').text
+#         # url = plugin.find('h3').find("a").get('href')
+#         url = plugin.find('h3').find("a")['href']
+#         rating = plugin.find("span", class_="rating-count").find('a').text
+#         r = refined(rating)
+#         data = {'name': name, "url": url, 'rating': r}
+#         print(data)
+#
+# def main():
+#     url = 'https://ru.wordpress.org/plugins/'
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def refined(s):
-    return re.sub(r"\D", "", s)
+# import requests
+# from bs4 import BeautifulSoup
+# import csv
+#
+#
+# def get_html(url):
+#     res = requests.get(url)
+#     return res.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def write_csv(data):
+#     with open('plugins1.csv', 'a', encoding='utf-8-sig') as f:
+#         writer = csv.writer(f, delimiter=';', lineterminator='\r')
+#         writer.writerow((data['name'], data['url'], data['snippet'], data['active_installs'], data['tests']))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     element = soup.find_all('article', class_='plugin-card')
+#     for el in element:
+#         try:
+#             name = el.find('h3').text
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find('a')['href']
+#         except ValueError:
+#             url = ''
+#
+#         try:
+#             snippet = el.find('div', class_='entry-excerpt').text.strip()
+#         except ValueError:
+#             snippet = ""
+#
+#         try:
+#             active = el.find('span', class_='active-installs').text.strip()
+#         except ValueError:
+#             active = ""
+#
+#         try:
+#             c = el.find('span', class_='tested-with').text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             cy = ''
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snippet': snippet,
+#             'active_installs': active,
+#             'tests': cy
+#         }
+#
+#         write_csv(data)
+#
+#         # print(cy)
+#
+#
+# def main():
+#     for i in range(26):
+#         url = f'https://ru.wordpress.org/plugins/browse/blocks/page/{i}/'
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def write_csv(data):
-    with open('plugins.csv', 'a') as f:
-        writer = csv.writer(f, delimiter=';', lineterminator='\r')
+# from parse import Parser
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-        writer.writerow(data['name'], data['url'], data['rating'])
 
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all('section', class_='plugin-section')[1]
-    plugins = p1.find_all('article')
+import socket
 
-    for plugin in plugins:
-        name = plugin.find('h3').text
-        # url = plugin.find('h3').find("a").get('href')
-        url = plugin.find('h3').find("a")['href']
-        rating = plugin.find("span", class_="rating-count").find('a').text
-        r = refined(rating)
-        data = {'name': name, "url": url, 'rating': r}
-        print(data)
 
-def main():
-    url = 'https://ru.wordpress.org/plugins/'
-    get_data(get_html(url))
+def run():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('127.0.0.1', 5000))
+    server_socket.listen()
+
+    while True:
+        client_socket, addr = server_socket.accept()
+        request = client_socket.recv(1024)
+
+        print(f'Клиент: {addr} => \n{request}\n')
 
 
 if __name__ == '__main__':
-    main()
+    run()
+
