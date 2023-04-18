@@ -6705,14 +6705,64 @@ import sqlite3
 # cur = con.cursor()
 #
 # con.close()
+#
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS user(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # date TEXT
+#     # )
+#     # """)
+#     cur.execute("DROP TABLE user")
 
-with sqlite3.connect("profile.db") as con:
-    cur = con.cursor()
-    # cur.execute("""CREATE TABLE IF NOT EXISTS user(
+
+# with sqlite3.connect('users.db') as con:
+#     cur = con.cursor()
+    # cur.execute("""CREATE TABLE IF NOT EXISTS person(
     # id INTEGER PRIMARY KEY AUTOINCREMENT,
     # name TEXT NOT NULL,
-    # summa REAL,
-    # date TEXT
-    # )
+    # phone BLOB NOT NULL DEFAULT '+79090000000',
+    # age INTEGER NOT NULL CHECK(age > 0 AND age < 100),
+    # email TEXT UNIQUE
+    # )""")
+    # cur.execute("""
+    # ALTER TABLE person
+    # RENAME TO person_table;
     # """)
-    cur.execute("DROP TABLE user")
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN address TEXT NOT NULL DEFAULT 'addr';
+    # """)
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # RENAME COLUMN address TO home_address;
+    # """)
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # DROP COLUMN home_address;
+    # """)
+    # cur.execute("""
+    # DROP TABLE person_table;
+    # """)
+
+
+with sqlite3.connect("db_4.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    SELECT *
+    FROM Ware
+    ORDER BY Price DESC
+    LIMIT 2, 5;
+    """)
+
+    # res = cur.fetchall()
+    # print(res)
+    # for res in cur:
+    #     print(res)
+
+    # res = cur.fetchone()
+    # print(res)
+    # res2 = cur.fetchmany(2)
+    # print(res2)
