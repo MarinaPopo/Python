@@ -6769,7 +6769,6 @@ import sqlite3
 
 import sqlite3
 
-
 # cars = [
 #     ('BMW', 54000),
 #     ('Chevrolet', 46000),
@@ -6902,10 +6901,10 @@ import sqlite3
 #
 #     write_ava('out.png', img)
 
-    # img = read_ava(2)
-    # if img:
-    #     binary = sqlite3.Binary(img)
-    #     cur.execute("INSERT INTO users VALUES('Илья', ?, 1000)", (binary,))
+# img = read_ava(2)
+# if img:
+#     binary = sqlite3.Binary(img)
+#     cur.execute("INSERT INTO users VALUES('Илья', ?, 1000)", (binary,))
 
 # with sqlite3.connect('cars.db') as con:
 #     cur = con.cursor()
@@ -6939,12 +6938,188 @@ import sqlite3
 
 # SQLAlchemy ORM
 
-import os
-from models.database import DATABASE_NAME
-import create_database as db_creator
+# import os
+#
+# from sqlalchemy import and_, or_, not_, desc, func, distinct, text
+# from models.database import DATABASE_NAME, Session
+# import create_database as db_creator
+# from models.lesson import Lesson, association_table
+# from models.student import Student
+# from models.group import Group
+#
+# if __name__ == '__main__':
+#     db_is_created = os.path.exists(DATABASE_NAME)
+#     if not db_is_created:
+#         db_creator.create_database()
+#
+#     session = Session()
 
-if __name__ =='__main__':
-    db_is_created = os.path.exists(DATABASE_NAME)
-    if not db_is_created:
-        db_creator.create_database()
+# print(session.query(Lesson).all())
+# print("*" * 50)
 
+# for it in session.query(Lesson):
+#     print(it.lesson_title)
+# print("*" * 50)
+#
+# print(session.query(Lesson).count())
+# print("*" * 50)
+#
+# print(session.query(Lesson).first())
+# print("*" * 50)
+#
+# for it in session.query(Lesson).filter(Lesson.id > 3):
+#     print(it)
+# print("*" * 50)
+
+# for it in session.query(Lesson).filter(and_(Lesson.id >= 3,
+#                                        Lesson.lesson_title.like('Ф%'))):
+#     print(it)
+# print("*" * 50)
+#
+# for it in session.query(Lesson).filter(not_(Lesson.id >= 3),
+#                                             not_(Lesson.lesson_title.like('М%'))):
+#     print(it)
+# print("*" * 50)
+
+# for it, gr in session.query(Lesson.lesson_title, Group.group_name).\
+#         filter(and_(association_table.c.lesson_id == Lesson.id,
+#                     association_table.c.group_id == Group.id,
+#                     Group.group_name == 'MDA-7')):
+#     print(it, gr)
+
+# print(session.query(Lesson).filter(Lesson.lesson_title is not None).all())
+
+# print(session.query(Lesson).filter
+#       (Lesson.lesson_title.in_(['Математика', 'Линейная алгебра'])).all())
+
+# print(session.query(Lesson).filter
+#       (Lesson.lesson_title.notin_(['Математика', 'Линейная алгебра'])).all())
+
+# print(session.query(Student).filter(Student.age.between(16, 17)).all())
+
+# print(session.query(Student).filter(not_(Student.age.between(17, 24))).all())
+
+# print(session.query(Student).filter(Student.age.like("1%")).all())
+
+# for it in session.query(Student).filter(Student.age.like("1%")).limit(4).offset(3):
+#     print(it)
+
+# for it in session.query(Student).order_by(Student.surname):
+#     print(it)
+
+# for it in session.query(Student).join(Group).filter(Group.group_name == 'MDA-7'):
+#     print(it)
+
+# for it in session.query(func.count(Student.surname),
+#                         Group.group_name).join(Group).group_by(Group.group_name):
+#     print(it)
+#
+# print("*" * 50)
+#
+# for it in session.query(func.count(Student.surname),
+#                         Group.group_name).join(Group).group_by\
+#             (Group.group_name).having(func.count(Student.surname) < 25):
+#     print(it)
+
+# for it in session.query(distinct(Student.age)):
+#     print(it)
+
+# for it in session.query(Student.age).filter(Student.age < 20).distinct():
+#     print(it)
+
+# for it in session.query(Lesson):
+# print(it.lesson_title)
+
+# i = session.query(Lesson).first()
+# i.lesson_title = "Информатика"
+# session.add(i)
+# session.commit()
+
+# session.query(Lesson).filter(
+#     Lesson.lesson_title.like('%м%')
+# ).update({"lesson_title": "М"}, synchronize_session='fetch')
+# session.commit()
+
+# i = session.query(Lesson).filter(Lesson.lesson_title == 'Физика').one()
+# session.delete(i)
+# session.commit()
+#
+# for it in session.query(Lesson):
+#     print(it.lesson_title)
+
+# session.add(Lesson(lesson_title='Физика'))
+# session.commit()
+
+# for it in session.query(Student).filter(text(
+# "age LIKE '1%'")).order_by(text("name, id desc")):
+#     print(it)
+
+
+from jinja2 import Template
+
+
+# name = 'Игорь'
+# age = 25
+# per = {'name': 'Игорь', 'age': 25}
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def get_age(self):
+#         return self.age
+#
+#
+# per = Person("Игорь", 25)
+#
+# tm = Template("Мне {{ p.get_age() }} лет. Меня зовут {{ p.get_name() }}")
+# # tm = Template("Мне {{ p.age] }} лет. Меня зовут {{ p.name }}")
+# # tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p['name'] }}")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# cities = [
+#     {'id': 1, 'city': 'Москва'},
+#     {'id': 2, 'city': 'Сочи'},
+#     {'id': 3, 'city': 'Смоленск'},
+#     {'id': 4, 'city': 'Минск'},
+#     {'id': 5, 'city': 'Ярославль'}
+# ]
+#
+# link = """<select name="cities">
+# {% for c in cities -%}
+# {% if c.id > 3 -%}
+#     <option value={{ c['id'] }}>{{ c['city'] }}</option>
+# {% elif c.city == 'Москва' -%}
+#     <option>{{ c['city'] }}</option>
+# {% else -%}
+#     {{c['city']}}
+# {% endif -%}
+# {% endfor -%}
+# </select>
+# """
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+# print(msg)
+
+car = [
+    {'model': 'Audi', 'price': 23000},
+    {'model': 'Skoda', 'price': 17300},
+    {'model': 'Renault', 'price': 44200},
+    {'model': 'Wolksvagen', 'price': 21300}
+]
+
+lst = [1, 2, 3, 4, 5, 6]
+# tpl = "{{ cs | sum(attribute='price') }}"
+tpl = "{{ cs | sum }}"
+tm = Template(tpl)
+# msg = tm.render(cs=car)
+msg = tm.render(cs=lst)
+
+print(msg)
