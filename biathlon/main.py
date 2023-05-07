@@ -15,3 +15,43 @@ if __name__ == '__main__':
         db_creator.create_database()
 
     session = Session()
+
+
+for it in session.query(Athlete):
+    print(it.last_name)
+print("*" * 50)
+
+print(session.query(Athlete).count())
+print("*" * 50)
+
+for it in session.query(Athlete).filter(Athlete.points > 400):
+    print(it)
+print("*" * 50)
+
+for it in session.query(ResultTable).filter(ResultTable.lag > 30):
+    print(it)
+print("*" * 50)
+
+for it in session.query(Athlete).filter((Athlete.last_name.like('Л%'))):
+    print(it)
+print("*" * 50)
+
+for it in session.query(Athlete).filter((Athlete.region.like('Башкортостан'))):
+    print(it)
+print("*" * 50)
+
+for it in session.query(ResultTable).filter((ResultTable.place.like('1'))):
+    print(it)
+print("*" * 50)
+
+for it in session.query(Athlete.region).distinct():
+    print(it)
+print("*" * 50)
+
+for it in session.query(ResultTable).filter((ResultTable.place < 4)):
+    print(it)
+print("*" * 50)
+
+for it in session.query(Athlete.first_name).filter((Athlete.last_name.like('Халили '))):
+    print(it)
+print("*" * 50)

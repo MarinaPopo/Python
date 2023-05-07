@@ -7123,3 +7123,11 @@ tm = Template(tpl)
 msg = tm.render(cs=lst)
 
 print(msg)
+
+
+{% if m.title = 'Главная' -%}
+    <li><a href="/{{ m['href'] }}" class="active">{{ m['title'] }}</a><li>
+{% else -%}
+    <li><a href="/{{ m['href'] }}">{{ m['title'] }}</a><li>
+{% endif -%}
+{% endfor -%}

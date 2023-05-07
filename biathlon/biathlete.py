@@ -19,5 +19,5 @@ class Athlete(Base):
         self.points = points
 
     def __repr__(self):
-        return f"Спортсмен ({self.last_name} {self.first_name}," \
-               f"Регион: {self.region}, Очки: {self.points})"
+        return f"Спортсмен {self.last_name} {self.first_name}, " \
+               f"регион: {self.region}, очки: {self.points}"

@@ -12,19 +12,19 @@ def create_database(load_fake_data=True):
 
 def _load_data(session):
     biathletes = [
-        {'last_name': 'Халили ',
+        {'last_name': 'Халили',
          'first_name': 'Карим',
          'region': 'Москва',
          'points': '571'},
-        {'last_name': 'Латыпов ',
+        {'last_name': 'Латыпов',
          'first_name': 'Эдуард',
          'region': 'Башкортостан',
          'points': '464'},
-        {'last_name': 'Серохвостов ',
+        {'last_name': 'Серохвостов',
          'first_name': 'Даниил',
          'region': 'Новосибирская область',
          'points': '442'},
-        {'last_name': 'Бабиков ',
+        {'last_name': 'Бабиков',
          'first_name': 'Антон',
          'region': 'Башкортостан',
          'points': '356'},
@@ -33,24 +33,7 @@ def _load_data(session):
          'region': 'Москва',
          'points': '339'},
     ]
-    # lessons_names = ['Математика', 'Программирование', 'Философия',
-    #                  'Алгоритмы и структуры данных', 'Линейная алгебра',
-    #                  'Статистика', 'Физика']
-    # group1 = Group(group_name='MDA-7')
-    # group2 = Group(group_name='MDA-9')
-    # session.add(group1)
-    # session.add(group2)
 
-    # for key, it in enumerate(lessons_names):
-    #     lesson = Lesson(lesson_title=it)
-    #     lesson.groups.append(group1)
-    #     if key % 2 == 0:
-    #         lesson.groups.append(group2)
-    #     session.add(lesson)
-    #
-    # faker = Faker('ru_RU')
-    # group_list = [group1, group2]
-    # session.commit()
 
     last_name = biathletes[0].get('last_name')
     first_name = biathletes[0].get('first_name')
