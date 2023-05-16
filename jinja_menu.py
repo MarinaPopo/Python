@@ -12,9 +12,9 @@ menu = [
 link = """<ul>
 {% for m in menu -%}
 {% if m.title == 'Главная' -%}
-<li><a href="/{{ m['href'] }}" class="active">{{ m['title'] }}</a><li>
+<li><a href="/{{ m['href'] }}" class="active">{{ m['title'] }}</a></li>
 {% else -%}
-<li><a href="/{{ m['href'] }}">{{ m['title'] }}</a><li>
+<li><a href="/{{ m['href'] }}">{{ m['title'] }}</a></li>
 {% endif -%}
 {% endfor -%}
 </ul>"""

@@ -7055,7 +7055,7 @@ import sqlite3
 #     print(it)
 
 
-from jinja2 import Template
+# from jinja2 import Template
 
 
 # name = 'Игорь'
@@ -7108,26 +7108,125 @@ from jinja2 import Template
 # msg = tm.render(cities=cities)
 # print(msg)
 
-car = [
-    {'model': 'Audi', 'price': 23000},
-    {'model': 'Skoda', 'price': 17300},
-    {'model': 'Renault', 'price': 44200},
-    {'model': 'Wolksvagen', 'price': 21300}
-]
-
-lst = [1, 2, 3, 4, 5, 6]
-# tpl = "{{ cs | sum(attribute='price') }}"
-tpl = "{{ cs | sum }}"
-tm = Template(tpl)
+# car = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44200},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+#
+# # lst = [1, 2, 3, 4, 5, 6]
+# # tpl = "{{ cs | sum(attribute='price') }}"
+# # tpl = "{{ (cs | max(attribute='price')).price }}"
+# # tpl = "{{ (cs | max(attribute='price')).model }}"
+# # tpl = "{{ cs | random }}"
+# tpl = "{{ cs | replace('model', 'brand') }}"
+# # tpl = "{{ cs | sum }}"
+# tm = Template(tpl)
 # msg = tm.render(cs=car)
-msg = tm.render(cs=lst)
+# # msg = tm.render(cs=lst)
+#
+# print(msg)
 
-print(msg)
+
+# persons = [
+#     {'name': 'Алексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+#
+# tpl = """
+# {% for u in users -%}
+#     {% filter upper %}{{ u.name }}{% endfilter %}
+# {% endfor -%}
+# """
+#
+# tm = Template(tpl)
+# msg = tm.render(users=persons)
+#
+# print(msg)
 
 
-{% if m.title = 'Главная' -%}
-    <li><a href="/{{ m['href'] }}" class="active">{{ m['title'] }}</a><li>
-{% else -%}
-    <li><a href="/{{ m['href'] }}">{{ m['title'] }}</a><li>
-{% endif -%}
-{% endfor -%}
+# html = """
+# {% macro text_input(name, value='', type='text', size=40) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {% endmacro %}
+#
+# <p>{{ text_input('username') }}</p>
+# <p>{{ text_input('email') }}</p>
+# <p>{{ text_input('password', type='password') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+
+# html = """
+# {% macro text_input(name, placeholder, type='text') %}
+#     <input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}">
+# {% endmacro %}
+#
+# <p>{{ text_input('firstname', 'Имя') }}</p>
+# <p>{{ text_input('lastname', 'Фамилия') }}</p>
+# <p>{{ text_input('address', 'Адрес') }}</p>
+# <p>{{ text_input('phone', 'Телефон', 'tel') }}</p>
+# <p>{{ text_input('email', 'Почта', 'email') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+# persons = [
+#     {'name': 'Алексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+#
+# html = """
+# {% macro list_users(list_of_user) -%}
+# <ul>
+# {% for u in list_of_user -%}
+#     <li>{{ u.name }} {{ caller(u) }} </li>
+# {% endfor -%}
+# </ul>
+# {%- endmacro %}
+#
+# {% call(user) list_users(users) %}
+#     <ul>
+#         <li>age: {{ user.year }}</li>
+#         <li>weight: {{ user.weight }}</li>
+#     </ul>
+# {% endcall %}
+# """
+#
+# tm = Template(html)
+# msg = tm.render(users=persons)
+#
+# print(msg)
+#
+
+# from jinja2 import Environment, FileSystemLoader
+
+# persons = [
+#     {'name': 'Алексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+#
+
+# subs = ['Культура', 'Наука', 'Политика', 'Спорт']
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# # tm = env.get_template('main.html')
+# # msg = tm.render(users=persons, title='About Jinja')
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
