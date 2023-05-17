@@ -7226,7 +7226,7 @@ import sqlite3
 # # tm = env.get_template('main.html')
 # # msg = tm.render(users=persons, title='About Jinja')
 #
-# tm = env.get_template('about.html')
+# tm = env.get_template('cat.html')
 # msg = tm.render(list_table=subs)
 #
 # print(msg)
