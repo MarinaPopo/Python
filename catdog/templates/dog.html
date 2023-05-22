@@ -3,4 +3,15 @@
 {% block content %}
 {{ super () }}
 <img src="static/dog.jpg">
+<hr>
+<h2>Сообщения</h2>
+<ul>
+    {% for p in posts %}
+    {% if p.receiver == 'Псу' %}
+    <li>
+        <div class="annonce">{{ p.text[:240]|striptags }}</div>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
 {% endblock %}

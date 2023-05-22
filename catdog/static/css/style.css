@@ -19,3 +19,12 @@ body{
     padding: 20px;
     box-sizing: border-box;
 }
+
+.receiver{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.annonce{
+    background: whitesmoke;
+}
