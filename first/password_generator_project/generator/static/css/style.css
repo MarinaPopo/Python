@@ -1,0 +1,17 @@
+body{
+    background: #73C6B6;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    width: 400px;
+    margin: 0 auto;
+}
+.container h1{
+    text-align: center;
+}
+.container form, .container h2, .container ul{
+    background: #EDBB99;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
