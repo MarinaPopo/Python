@@ -6263,12 +6263,12 @@ import time
 # # print(todos)
 #
 # todos_by_user = {}
-# for todo in todos:
-#     if todo['completed']:
+# for auth in todos:
+#     if auth['completed']:
 #         try:
-#             todos_by_user[todo['userId']] += 1
+#             todos_by_user[auth['userId']] += 1
 #         except KeyError:
-#             todos_by_user[todo['userId']] = 1
+#             todos_by_user[auth['userId']] = 1
 #
 # print(todos_by_user)
 # top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
@@ -6291,9 +6291,9 @@ import time
 # print(f"User{s} {max_users} completed {max_complete} todos")
 #
 #
-# def keep(todo):
-#     is_complete = todo['completed']
-#     has_max_count = str(todo['userId']) in users
+# def keep(auth):
+#     is_complete = auth['completed']
+#     has_max_count = str(auth['userId']) in users
 #     return is_complete and has_max_count
 #
 #
